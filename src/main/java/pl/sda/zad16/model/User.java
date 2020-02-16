@@ -1,6 +1,7 @@
 package pl.sda.zad16.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -26,6 +27,15 @@ public class User {
             joinColumns = {@JoinColumn(name = "user_id")},
             inverseJoinColumns = {@JoinColumn(name = "role_id")}
     )
-    private Set<Role> roles;
+    private Set<Role> roles = new HashSet<>();
 
+    public User() { //JPA
+    }
+
+    public User(String username, String password, boolean enabled, Set<Role> roles) {
+        this.username = username;
+        this.password = password;
+        this.enabled = enabled;
+        this.roles = roles;
+    }
 }
