@@ -41,13 +41,15 @@ public class Zad16Application implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        if(userRepository.count() == 0) {
+        if (userRepository.count() == 0) {
             User user = new User("user@wp.pl",
-                    passwordEncoder.encode("user123"), true, new HashSet<>(Collections.singletonList(new Role("USER"))));
+                    passwordEncoder.encode("user123"), true,
+                    new HashSet<>(Collections.singletonList(new Role("USER"))));
             userRepository.save(user);
 
             User admin = new User("admin@wp.pl",
-                    passwordEncoder.encode("admin123"), true, new HashSet<>(Collections.singletonList(new Role("USER"))));
+                    passwordEncoder.encode("admin123"), true, new HashSet<>(Collections.singletonList(new Role("ADMIN"
+            ))));
             userRepository.save(admin);
         }
     }
