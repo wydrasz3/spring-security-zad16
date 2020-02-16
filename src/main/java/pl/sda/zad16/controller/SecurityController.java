@@ -8,7 +8,7 @@ public class SecurityController {
 
     public static final String LOGIN_PAGE = "login";
 
-    @GetMapping
+    @GetMapping("/login")
     public String login() {
         return LOGIN_PAGE;
     }
