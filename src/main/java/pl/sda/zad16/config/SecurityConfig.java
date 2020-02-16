@@ -15,8 +15,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/admin/**").hasRole("USER")
-                .antMatchers("/user/**").hasRole("ADMIN")
+                .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/user/**").hasRole("USER")
                 .antMatchers("/").authenticated()
                 .antMatchers("/login").permitAll()
                 .antMatchers("/register*").permitAll();
@@ -41,7 +41,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .withUser("admin@wp.pl")
                 .password("{noop}admin123")
-                .roles("ADMIN");
+                .roles("USER", "ADMIN");
     }
 
     @Override
