@@ -5,19 +5,15 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import pl.sda.zad16.model.Role;
 import pl.sda.zad16.model.User;
-import pl.sda.zad16.repository.RoleRepository;
 import pl.sda.zad16.repository.UserRepository;
 
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 
@@ -52,5 +48,10 @@ public class Zad16Application implements CommandLineRunner {
             ))));
             userRepository.save(admin);
         }
+    }
+
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 }
