@@ -41,8 +41,10 @@ public class Zad16Application implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        User user1 = new User("test@wp.pl",
-                passwordEncoder.encode("haslo123"), true, new HashSet<>(Collections.singletonList(new Role("USER"))));
-        userRepository.save(user1);
+        if(userRepository.count() == 0) {
+            User user1 = new User("test@wp.pl",
+                    passwordEncoder.encode("haslo123"), true, new HashSet<>(Collections.singletonList(new Role("USER"))));
+            userRepository.save(user1);
+        }
     }
 }
