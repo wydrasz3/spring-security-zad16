@@ -8,7 +8,7 @@ public class MainController {
 
     public static final String PAGE = "index";
 
-    @GetMapping
+    @GetMapping("/")
     public String main() {
         return PAGE;
     }
