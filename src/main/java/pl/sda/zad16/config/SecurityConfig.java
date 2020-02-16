@@ -61,9 +61,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     private String getAuthoritiesQuery() {
-        return "select u.username, u.role from user u " +
-                " join userRole ur on u.id = ur.userId " +
-                " join role r on r.id = ur.roleId";
+        return "select u.username, r.name from user u " +
+                " join user_role ur on u.id = ur.user_id " +
+                " join role r on r.id = ur.role_id";
     }
 
     @Override
