@@ -42,9 +42,13 @@ public class Zad16Application implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         if(userRepository.count() == 0) {
-            User user1 = new User("test@wp.pl",
-                    passwordEncoder.encode("haslo123"), true, new HashSet<>(Collections.singletonList(new Role("USER"))));
-            userRepository.save(user1);
+            User user = new User("user@wp.pl",
+                    passwordEncoder.encode("user123"), true, new HashSet<>(Collections.singletonList(new Role("USER"))));
+            userRepository.save(user);
+
+            User admin = new User("admin@wp.pl",
+                    passwordEncoder.encode("admin123"), true, new HashSet<>(Collections.singletonList(new Role("USER"))));
+            userRepository.save(admin);
         }
     }
 }
